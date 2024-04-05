@@ -46,6 +46,18 @@ main {
     padding: 15px;
 }
 
+.container h1{
+    padding: 12px 0;
+}
+
+.btn {
+    background: black;
+    color: white;
+    padding: 9px 12px;
+    border: 1px solid gray;
+    border-radius: 6px;
+}
+
 footer{
     font-size: 12px;
     background-color: black;
@@ -57,3 +69,26 @@ footer{
 
 }
 
+@media only screen and (max-width: 600px) {
+    body {
+        background-color: lightblue;
+    }
+
+    .container {
+        font-size: 12px;
+    }
+
+    nav {
+        flex-direction: column;
+    }
+
+    .logo {
+        padding: 6px 0;
+        font-size: 12px;
+    }
+
+    .logo span {
+        font-size: 20px;
+    }
+    
+}
