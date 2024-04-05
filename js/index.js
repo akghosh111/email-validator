@@ -1,10 +1,7 @@
-console.log("this is the script");
-
 document.addEventListener("DOMContentLoaded", function () {
     const submitBtn = document.querySelector(".btn");
     submitBtn.addEventListener("click", async (e) => {
         e.preventDefault();
-        console.log("clicked");
         const key = ""; //enter your api key here
         const email = document.getElementById("username").value;
         const url = `https://api.emailvalidation.io/v1/info?apikey=${key}&email=${email}`;
