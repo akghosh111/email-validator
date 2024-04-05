@@ -59,6 +59,10 @@ main {
     cursor: pointer;
 }
 
+#resultCont div::first-letter {
+    text-transform: uppercase;
+}
+
 footer{
     font-size: 12px;
     background-color: black;
