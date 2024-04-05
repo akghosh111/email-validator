@@ -1,33 +1,34 @@
-console.log("chup bsdk");
+console.log("this is the script");
 
-document.addEventListener("DOMContentLoaded", function() {
-    let result = {
-        "tag": "",
-        "free": true,
-        "role": false,
-        "user": "anukiranghosh",
-        "email": "anukiranghosh@gmail.com",
-        "score": 0.64,
-        "state": "deliverable",
-        "domain": "gmail.com",
-        "reason": "valid_mailbox",
-        "mx_found": true,
-        "catch_all": null,
-        "disposable": false,
-        "smtp_check": true,
-        "did_you_mean": "",
-        "format_valid": true
-    };
+document.addEventListener("DOMContentLoaded", function () {
+    const submitBtn = document.querySelector(".btn");
+    submitBtn.addEventListener("click", async (e) => {
+        e.preventDefault();
+        console.log("clicked");
+        const key = ""; //enter your api key here
+        const email = document.getElementById("username").value;
+        const url = `https://api.emailvalidation.io/v1/info?apikey=${key}&email=${email}`;
+        
+        try {
+            const res = await fetch(url);
+            const result = await res.json(); // Fixed: added parentheses to res.json()
+            let str = '';
+            for (const prop of Object.keys(result)) { // Changed variable name from key to prop to avoid conflict
+                if(result[prop] !=="" && result[prop] !==" "){
+                    str = str + `<div>${prop}: ${result[prop]}</div>`;
 
-    let str = '';
-    for (key of Object.keys(result)) {
-        str = str + `<div>${key}: ${result[key]}</div>`;
-    }
-    console.log(str);
-    let resultCont = document.getElementById("resultCont");
-    if (resultCont) {
-        resultCont.innerHTML = str;
-    } else {
-        console.error("resultCont element not found!");
-    }
+                }
+                
+            }
+            console.log(str);
+            const resultCont = document.getElementById("resultCont");
+            if (resultCont) {
+                resultCont.innerHTML = str;
+            } else {
+                console.error("resultCont element not found!");
+            }
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    });
 });
